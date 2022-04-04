@@ -25,8 +25,17 @@ def call(String branch = 'null') {
 			stage('CODECHECKOUT from SCM') {
 				steps {
 					echo "You have chosen branch $BRANCH_NAME"
+					git branch: '$BRANCH_NAME',
+                                            url: "https://github.com/bhagyameka/calculator.git"
+					    credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
+				}	
+			}
+		        stage('build') {
+				steps {
+					echo "building using maven"
 				}	
 			}
 		}
+		
 	}
 }
