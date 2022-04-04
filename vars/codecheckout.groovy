@@ -26,7 +26,7 @@ def call(String branch = 'null') {
 				steps {
 					echo "You have chosen branch $BRANCH_NAME"
 					println "$BRANCH_NAME".drop(7)
-					git branch: "$BRANCH_NAME.drop(7)", url: "https://github.com/bhagyameka/calculator.git", credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
+					git branch: "$BRANCH_NAME".drop(7), url: "https://github.com/bhagyameka/calculator.git", credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
 				}	
 			}
 		        stage('build using maven') {
