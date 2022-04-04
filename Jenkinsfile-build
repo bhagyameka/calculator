@@ -9,7 +9,7 @@ parameters {
 	}	
 
 stages {
-
+/*
 stage('Code checkout from bitbucket-dev'){
     steps {
          when {
@@ -39,7 +39,7 @@ stage('Code checkout from bitbucket-sit'){
         echo '*******mvn version end*******'
      
     }
-}
+}*/
 stage ('Build using Maven') {
     steps {
         echo '*******mvn build start*******'
