@@ -33,7 +33,9 @@ stages {
       parallel { 
 	stage('Deploy to DEV ENVIRONMENT') {
 		when {
-			 "$DEPLOY_TO" = 'origin/dev'
+			expression{
+				"$DEPLOY_TO" == 'origin/dev'
+			}
 			}
       steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
@@ -45,7 +47,9 @@ stages {
 	}
 	stage('Deploy to SIT ENVIRONMENT') {
 		when {
-			 "$DEPLOY_TO" = 'origin/sit'
+			expression{
+				"$DEPLOY_TO" == 'origin/sit'
+			}
 			}
       steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
