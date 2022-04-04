@@ -16,7 +16,7 @@ stage('Code checkout from bitbucket-dev'){
 	environment name: 'BUILD_BRANCH', value: 'dev'
 	   }	
         echo '*******Code checkout from dev branch*******'
-        git branch: '${BUILD_BRANCH}', url: "https://github.com/bhagyameka/calculator.git", credentialsId: '844462bd-9943-47ee-8e1a-6b9973cfdfa1'
+        git branch: 'dev', url: "https://github.com/bhagyameka/calculator.git", credentialsId: '844462bd-9943-47ee-8e1a-6b9973cfdfa1'
         echo '*******Code checkout done*******'
 
         echo '*******mvn version start*******'
