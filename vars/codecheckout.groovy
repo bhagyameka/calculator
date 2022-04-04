@@ -49,8 +49,7 @@ stage ('Test using CheckMarX') {
     steps {
         echo '*******CheckMarX start*******'
         
-    //step([$class: 'CxScanBuilder', comment: '', configAsCode: true, credentialsId: 'CheckmarxAdmin', customFields: '', excludeFolders: '', exclusionsSetting: 'job', failBuildOnNewResults: false, filterPattern: '', fullScanCycle: 10, generatePdfReport: true, groupId: '14', isProxy: false, password: '{AQAAABAAAAAQuS0flM51g0FeEL8tg0KFkzAKx67QTxAk8RG33TyUuTw=}', preset: '7', projectName: 'IDFC-MS-Gateway', sastEnabled: true, serverUrl: ' https://checkmarx.idfcbank.com', sourceEncoding: '6', useOwnServerCredentials: true, username: '', waitForResultsEnabled: true])
-    
+   
         echo '*******CheckMarX end*******'
     }
    
@@ -60,18 +59,7 @@ stage ('Test using CheckMarX') {
 stage ('Upload to Jfrog') {
      steps {
          echo '*******upload to JFrog start*******'
-       /*  rtUpload (
-                serverId: 'artifactory_idfcbank',
-                spec:
-                    '''{
-                      "files": [
-                        {
-                          "pattern": "/data/jenkins/workspace/Digital Onboarding/DemoPipelineAsCode/target/cicd-0.0.1-SNAPSHOT.war",
-                          "target": "maven-local/idfc/digital_onboarding/master/"
-                        }
-                     ]
-                    }''',
-            ) */
+      
          echo '*******upload to JFrog End*******'
      }
 }
