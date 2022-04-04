@@ -14,7 +14,7 @@
 		}
 	}
 } */
-def call(String branch = 'null', String bn) {
+def call(String branch = 'null') {
 	echo "This is shared library codecheckout: ${branch}"
 	pipeline {
 		environment {
@@ -25,8 +25,8 @@ def call(String branch = 'null', String bn) {
 			stage('CODECHECKOUT from SCM') {
 				steps {
 					echo "You have chosen branch $BRANCH_NAME"
-					bn = println "$BRANCH_NAME".drop(7)
-					//git branch: "$BRANCH_NAME", url: "https://github.com/bhagyameka/calculator.git", credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
+					println "$BRANCH_NAME".drop(7)
+					git branch: "$BRANCH_NAME.drop(7)", url: "https://github.com/bhagyameka/calculator.git", credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
 				}	
 			}
 		        stage('build using maven') {
