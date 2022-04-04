@@ -58,7 +58,35 @@ stages {
           echo '*******deploy on weblogic done*******'
         // }
       }
-	}      
+	} 
+      stage('Deploy to UAT ENVIRONMENT') {
+		when {
+			expression{
+				"$DEPLOY_TO" == 'origin/uat'
+			}
+			}
+      steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+         //  sshagent(['ID_WEBLOGIC_DIGITAL_ONBOARDING']) {
+          // sh "scp -v -o StrictHostKeyChecking=no /data/jenkins/workspace/Digital Onboarding/DemoPipelineAsCode/target/*.war deployer@10.5.25.170:7001/weblogicdomain/onboardapp/servers/AdminServer/upload/sample1.war/app/"
+          echo '*******deploy on weblogic done*******'
+        // }
+      }
+	}  
+      stage('Deploy to PROD ENVIRONMENT') {
+		when {
+			expression{
+				"$DEPLOY_TO" == 'origin/master'
+			}
+			}
+      steps {
+          echo "*******deploy on weblogic Start to PROD *******"
+         //  sshagent(['ID_WEBLOGIC_DIGITAL_ONBOARDING']) {
+          // sh "scp -v -o StrictHostKeyChecking=no /data/jenkins/workspace/Digital Onboarding/DemoPipelineAsCode/target/*.war deployer@10.5.25.170:7001/weblogicdomain/onboardapp/servers/AdminServer/upload/sample1.war/app/"
+          echo '*******deploy on weblogic done*******'
+        // }
+      }
+	}   
  } 
 }
 }
