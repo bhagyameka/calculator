@@ -28,7 +28,7 @@ def call(String branch = 'null') {
 					git branch: "$BRANCH_NAME", url: "https://github.com/bhagyameka/calculator.git", credentialsId: 'c6947d68-906d-4126-a88a-d93c8d4a1ec8'
 				}	
 			}
-		        stage('build') {
+		        stage('build using maven') {
 				steps {
 					echo "building using maven"
 				}	
