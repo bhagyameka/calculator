@@ -30,7 +30,11 @@ stages {
 
         
  stage ('Deploy on Weblogic') {
-      
+      parallel { 
+	stage('Deploy to DEV ENVIRONMENT') {
+		when {
+			environment ${branch}: 'DEPLOY_TO', value: 'origin/dev'
+			}
       steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
          //  sshagent(['ID_WEBLOGIC_DIGITAL_ONBOARDING']) {
@@ -38,6 +42,19 @@ stages {
           echo '*******deploy on weblogic done*******'
         // }
       }
+	}
+	stage('Deploy to SIT ENVIRONMENT') {
+		when {
+			environment ${branch}: 'DEPLOY_TO', value: 'origin/sit'
+			}
+      steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+         //  sshagent(['ID_WEBLOGIC_DIGITAL_ONBOARDING']) {
+          // sh "scp -v -o StrictHostKeyChecking=no /data/jenkins/workspace/Digital Onboarding/DemoPipelineAsCode/target/*.war deployer@10.5.25.170:7001/weblogicdomain/onboardapp/servers/AdminServer/upload/sample1.war/app/"
+          echo '*******deploy on weblogic done*******'
+        // }
+      }
+	}      
  } 
 }
 }
