@@ -2,7 +2,7 @@ pipeline {
 
 agent any
 parameters {
-		choice(name: 'TARGET_ENV', choices: ['dev', 'sit', 'uat', 'prod'], description: 'Target environment to build')
+		choice(name: 'TARGET_ENV', choices: ['dev', 'sit', 'uat', 'master'], description: 'Target environment to build')
 	}	
 	environment {
 		build-branch = "${TARGET_ENV}"
