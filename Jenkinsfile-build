@@ -5,15 +5,18 @@ parameters {
 		choice(name: 'TARGET_ENV', choices: ['dev', 'sit', 'uat', 'master'], description: 'Target environment to build')
 	}	
 	environment {
-		build-branch = "${TARGET_ENV}"
+		BUILD_BRANCH = "${TARGET_ENV}"
 	}	
 
 stages {
-/*
-stage('Code checkout from bitbucket'){
+
+stage('Code checkout from bitbucket-dev'){
     steps {
-        echo '*******Code checkout*******'
-       // git url: "ssh://git@bitbucket.devops.idfcbank.com:7999/do/idfc-ms-gateway.git", credentialsId: '80b98c15-305a-488a-bc1f-199f60ec405b'
+         when {
+	environment name: 'BUILD_BRANCH', value: 'dev'
+	   }	
+        echo '*******Code checkout from dev branch*******'
+        git branch: '${BUILD_BRANCH}', url: "https://github.com/bhagyameka/calculator.git", credentialsId: '844462bd-9943-47ee-8e1a-6b9973cfdfa1'
         echo '*******Code checkout done*******'
 
         echo '*******mvn version start*******'
@@ -22,12 +25,25 @@ stage('Code checkout from bitbucket'){
      
     }
 }
-*/
+stage('Code checkout from bitbucket-sit'){
+    steps {
+         when {
+	environment name: 'BUILD_BRANCH', value: 'sit'
+	   }	
+        echo '*******Code checkout from sit branch*******'
+        git branch: 'sit', url: "https://github.com/bhagyameka/calculator.git", credentialsId: '844462bd-9943-47ee-8e1a-6b9973cfdfa1'
+        echo '*******Code checkout done*******'
+
+        echo '*******mvn version start*******'
+        sh 'mvn --version'
+        echo '*******mvn version end*******'
+     
+    }
+}
 stage ('Build using Maven') {
     steps {
         echo '*******mvn build start*******'
-        //sh 'mvn -s /data/jenkins/workspace/Digital" "Onboarding/DemoPipelineAsCode/settings.xml clean install -X'
-        //-Dmaven.wagon.http.ssl.insecure=true -Drepo.id=cms-stride -Drepo.login=gBL9g2hjHb'
+        //sh 'mvn clean install'
         echo '*******mvn build done*******'
     }
 }
