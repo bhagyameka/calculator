@@ -32,6 +32,7 @@ def call(String branch = 'null') {
 		        stage('build using maven') {
 				steps {
 					echo "building using maven"
+					sh 'mvn clean install'
 				}	
 			}
 		}
