@@ -18,7 +18,7 @@ stages {
  }
 
 
-/*        
+       
  stage ('Deploy on Weblogic') {
       parallel { 
 	stage('Deploy to DEV ENVIRONMENT') {
@@ -71,9 +71,9 @@ stages {
       }
 	}   
  } 
-}*/
+}
 
-	if ("$DEPLOY_TO" == 'origin/dev') {
+/*	if ("$DEPLOY_TO" == 'origin/dev') {
 		stage ('Deploy on Weblogic') {
    steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
@@ -101,7 +101,7 @@ stage ('Deploy on Weblogic') {
           echo '*******deploy on weblogic done*******'
           }
 		}
-}
+}*/
 
 	
 }
