@@ -18,7 +18,7 @@ stages {
  }
 
 
-       
+ /*      
  stage ('Deploy on Weblogic') {
       parallel { 
 	stage('Deploy to DEV ENVIRONMENT') {
@@ -71,38 +71,33 @@ stages {
       }
 	}   
  } 
-}
-
-/*	if ("$DEPLOY_TO" == 'origin/dev') {
-		stage ('Deploy on Weblogic') {
-   steps {
-          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
-          echo '*******deploy on weblogic done*******'
-          }
-		}
-} else if ("$DEPLOY_TO" == 'origin/sit') {
-stage ('Deploy on Weblogic') {
-   steps {
-          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
-          echo '*******deploy on weblogic done*******'
-          }
-		}
-} else if ("$DEPLOY_TO" == 'origin/uat') {
-  stage ('Deploy on Weblogic') {
-   steps {
-          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
-          echo '*******deploy on weblogic done*******'
-          }
-		}
-} else {
-stage ('Deploy on Weblogic') {
-   steps {
-          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
-          echo '*******deploy on weblogic done*******'
-          }
-		}
 }*/
-
+stage ('Deploy on Weblogic') {
+	 steps {
+		 script{
+	if ("$DEPLOY_TO" == 'origin/dev') {
+  
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+		
+} else if ("$DEPLOY_TO" == 'origin/sit') {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+		
+} else if ("$DEPLOY_TO" == 'origin/uat') {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+		
+} else {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+		}
+}
+}
 	
 }
 }
