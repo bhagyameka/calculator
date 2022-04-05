@@ -81,17 +81,17 @@ stage ('Deploy on Weblogic') {
           echo '*******deploy on weblogic done*******'
           }
 		
-} else if ("$DEPLOY_TO" == 'origin/sit') {
+ else if ("$DEPLOY_TO" == 'origin/sit') {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
 		
-} else if ("$DEPLOY_TO" == 'origin/uat') {
+else if ("$DEPLOY_TO" == 'origin/uat') {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
 		
-} else {
+ else {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
