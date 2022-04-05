@@ -18,7 +18,7 @@ stages {
  }
 
 
-        
+/*        
  stage ('Deploy on Weblogic') {
       parallel { 
 	stage('Deploy to DEV ENVIRONMENT') {
@@ -71,7 +71,31 @@ stages {
       }
 	}   
  } 
+}*/
+stage ('Deploy on Weblogic') {
+	if ("$DEPLOY_TO" == 'origin/dev') {
+   steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+} else if ("$DEPLOY_TO" == 'origin/sit') {
+steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+} else if ("$DEPLOY_TO" == 'origin/uat') {
+  steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
+} else {
+ steps {
+          echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
+          echo '*******deploy on weblogic done*******'
+          }
 }
+}
+	
 }
 }
 }
