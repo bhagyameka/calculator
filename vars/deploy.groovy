@@ -72,29 +72,37 @@ stages {
 	}   
  } 
 }*/
-stage ('Deploy on Weblogic') {
+
 	if ("$DEPLOY_TO" == 'origin/dev') {
+		stage ('Deploy on Weblogic') {
    steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
+		}
 } else if ("$DEPLOY_TO" == 'origin/sit') {
-steps {
+stage ('Deploy on Weblogic') {
+   steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
+		}
 } else if ("$DEPLOY_TO" == 'origin/uat') {
-  steps {
+  stage ('Deploy on Weblogic') {
+   steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
+		}
 } else {
- steps {
+stage ('Deploy on Weblogic') {
+   steps {
           echo "*******deploy on weblogic Start to $DEPLOY_TO *******"
           echo '*******deploy on weblogic done*******'
           }
+		}
 }
-}
+
 	
 }
 }
